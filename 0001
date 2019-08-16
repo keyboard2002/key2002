@@ -1,0 +1,29 @@
+# coding: utf-8
+# by:Gryph0n
+import pandas as pd
+import re
+str1 = '01'
+str2 = '02'
+str3 = '03'
+str4 = '04'
+str5 = '05'
+str6 = '06'
+str7 = '07'
+str8 = '08'
+
+res=pd.read_excel('1.xlsx')
+res1=res['XXXX']
+data1=res1.values
+n= len(data1)
+
+res2 = res['用户名']
+data2 = res2.values
+
+for i in range(n):
+	a = str(data1[i])
+	b = str(data2[i])
+	if re.search(str1,a) or re.search(str2,a) or re.search(str3,a) or re.search(str4,a) or re.search(str5,a) or re.search(str6,a) or re.search(str7,a) or re.search(str8,a) :
+		print("行号%s 用户名%s 内容%s " %(i,b,a))
+		fc = str(i) + '|' + b +'|'+ a +'\n'
+		with open('result.txt','a+',encoding='utf-8') as f:
+			f.write(fc)
